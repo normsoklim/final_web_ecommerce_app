@@ -1,46 +1,46 @@
 .cart-item {
-    border-bottom: 1px solid #eaeaea;
-    padding: 15px 0;
+  border-bottom: 1px solid #eaeaea;
+  padding: 10px 0;
 }
 
 .cart-item:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .cart-item img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    border-radius: 5px;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 5px;
 }
 
 .cart-summary {
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: right;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .quantity-control {
-    display: flex;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .quantity-control button {
-    width: 32px;
-    height: 32px;
-    line-height: 1;
-    padding: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
 }
 
 .quantity-control span {
-    width: 30px;
-    text-align: center;
-    display: inline-block;
+  width: 32px;
+  text-align: center;
+  display: inline-block;
 }
 
 .checkout-btn {
-    margin-top: 20px;
+  margin-top: 10px;
 }
+
 .step {
   position: relative;
   z-index: 1;
@@ -50,19 +50,22 @@
   border: 2px solid #dee2e6;
   font-weight: 500;
   transition: all 0.3s ease;
+  font-size: 0.9rem;
 }
+
 .step.active {
   border-color: #007bff;
   background: #007bff;
   color: white;
 }
-/* Step progress bar */
+
 .checkout-steps {
   display: flex;
   justify-content: space-between;
   position: relative;
   cursor: pointer;
 }
+
 .checkout-steps::before {
   content: '';
   position: absolute;
@@ -73,4 +76,24 @@
   background-color: #dee2e6;
   transform: translateY(-50%);
   z-index: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+  .cart-item .text-right {
+    text-align: left !important;
+  }
+
+  .quantity-control {
+    justify-content: flex-start;
+  }
+
+  .cart-item h6 {
+    font-size: 0.9rem;
+  }
+
+  .step {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
 }

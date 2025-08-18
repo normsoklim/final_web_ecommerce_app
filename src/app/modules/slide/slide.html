@@ -1,22 +1,21 @@
 <div id="carouselExampleCaptions" class="carousel slide shadow rounded overflow-hidden" data-ride="carousel">
   <!-- Indicators -->
-  <ol class="carousel-indicators position-absolute w-100 m-0 p-0" style="bottom: 15px; justify-content: center; display: flex; gap: 10px;">
+  <ol class="carousel-indicators position-absolute w-100 m-0 p-0">
     <li *ngFor="let image of images; let i = index"
         [class.active]="i === currentIndex"
         (click)="goToSlide(i)"
-        class="indicator-dot">
-    </li>
+        class="indicator-dot"></li>
   </ol>
 
   <!-- Slides -->
   <div class="carousel-inner">
     <div class="carousel-item" *ngFor="let image of images; let i = index" [class.active]="i === currentIndex">
       <img [src]="image.src"
-           class="d-block w-100 img-fluid rounded"
+           class="d-block w-100 img-fluid"
            [alt]="image.alt"
            style="height: 450px; object-fit: cover;">
       <div class="carousel-caption d-none d-md-block custom-caption">
-       
+        
       </div>
     </div>
   </div>

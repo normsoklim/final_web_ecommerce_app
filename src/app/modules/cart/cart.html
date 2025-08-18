@@ -1,69 +1,73 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css">
-<div class="container my-5 ">
-    <h2 class="mb-4 text-center">Shopping Cart</h2>
-     <!-- Progress Steps -->
+
+<div class="container my-5">
+  <h2 class="mb-4 text-center">Shopping Cart</h2>
+
+  <!-- Progress Steps -->
   <div class="checkout-steps mb-4">
-    <div class="step active" >Cart</div>
-    <div class="step ">Checkout</div>
+    <div class="step active">Cart</div>
+    <div class="step">Checkout</div>
     <div class="step">Payment</div>
     <div class="step">Confirmation</div>
   </div>
-    <div class="card-body p-4">
-        @if(cartService.getCartItem().length == 0){
-        <div class="mb-4 text-center">
-            <h2 style="color: rgb(224, 223, 220);">Your cart is empty</h2>
-            <a href="" routerLink="/" class=" btn-primary">🔙Continue Shopping</a>
-        </div>
-        }
-        @for (item of cartService.getCartItem(); track item.id ){
-        <!-- Cart Item -->
-        <div class="cart-item row align-items-center">
-             <div class="col-1 text-center">
-               <input type="checkbox" 
-               [checked]="item.is_select" 
-               (change)="cartService.selectCartItem(item)"
-                class="form-control form-check-input">
-            </div>
-            <div class="col-1 text-center">
-                <img [src]="item.image" alt="Product Image">
-            </div>
-            <div class="col-2">
-                <h6>{{item.title}}</h6>
-                <small class="text-muted">Category:{{item.category}}</small>
-            </div>
-            <div class="col-2 text-right">
-                <span>{{item.price | currency}}</span>
-            </div>
-            <div class="col-2 quantity-control">
-                <button class="btn btn-outline-danger btn-sm" (click)="cartService.decrementQty(item)">-</button>
-                <span style="font-size: 20px;">{{item.qty}}</span>
-                <button class="btn btn-outline-primary  btn-sm" (click)="cartService.incrementQty(item)">+</button>
-            </div>
-            <div class="col-2 text-right">
-                <strong>{{item.price * item.qty | currency}}</strong>
-            </div>
-            <div class="col-2 text-right">
-                <span class="btn btn-outline-danger" (click)="cartService.removeCartItem(item)">Remove</span>
-            </div>
 
-        </div>
-        }
-        @if(cartService.getCartItem().length > 0){
-        <!-- Total Summary -->
-        <div class="row mt-2">
-            <div class="col-12 cart-summary">
-                Total:{{cartService.getCartTotal() | currency}}
-            </div>
-        </div>
+  <div class="card-body p-4">
 
-        <!-- Checkout Button -->
-        <div class="row">
-            <div class="col-md-12 text-right">
-                <button class="btn btn-success checkout-btn" routerLink="/check-out">Proceed to Checkout</button>
-            </div>
+    @if(cartService.getCartItem().length == 0){
+      <div class="mb-4 text-center">
+        <h2 class="text-muted">Your cart is empty</h2>
+        <a href="" routerLink="/" class="btn btn-primary">🔙 Continue Shopping</a>
+      </div>
+    }
+
+    @for(item of cartService.getCartItem(); track item.id ){
+      <!-- Cart Item -->
+      <div class="cart-item row align-items-center py-2">
+        <div class="col-2 col-md-1 text-center mb-2 mb-md-0">
+          <input type="checkbox" 
+                 [checked]="item.is_select" 
+                 (change)="cartService.selectCartItem(item)"
+                 class="form-control form-check-input">
         </div>
+        <div class="col-3 col-md-1 text-center mb-2 mb-md-0">
+          <img [src]="item.image" alt="Product Image" class="img-fluid">
+        </div>
+        <div class="col-7 col-md-2 mb-2 mb-md-0">
+          <h6>{{item.title}}</h6>
+          <small class="text-muted d-block">Category: {{item.category}}</small>
+        </div>
+        <div class="col-6 col-md-2 text-right mb-2 mb-md-0">
+          <span>{{item.price | currency}}</span>
+        </div>
+        <div class="col-6 col-md-2 quantity-control mb-2 mb-md-0">
+          <button class="btn btn-outline-danger btn-sm" (click)="cartService.decrementQty(item)">-</button>
+          <span>{{item.qty}}</span>
+          <button class="btn btn-outline-primary btn-sm" (click)="cartService.incrementQty(item)">+</button>
+        </div>
+        <div class="col-6 col-md-2 text-right mb-2 mb-md-0">
+          <strong>{{item.price * item.qty | currency}}</strong>
+        </div>
+        <div class="col-6 col-md-2 text-right">
+          <button class="btn btn-outline-danger btn-sm" (click)="cartService.removeCartItem(item)">Remove</button>
+        </div>
+      </div>
+    }
 
-        }
+    @if(cartService.getCartItem().length > 0){
+      <!-- Total Summary -->
+      <div class="row mt-3">
+        <div class="col-12 text-right cart-summary">
+          Total: {{cartService.getCartTotal() | currency}}
+        </div>
+      </div>
 
-    </div>
+      <!-- Checkout Button -->
+      <div class="row mt-2">
+        <div class="col-12 text-right">
+          <button class="btn btn-success checkout-btn" routerLink="/check-out">Proceed to Checkout</button>
+        </div>
+      </div>
+    }
+
+  </div>
 </div>
