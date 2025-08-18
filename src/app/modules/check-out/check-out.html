@@ -1,0 +1,65 @@
+<div class="container my-5 checkout-container">
+
+  <!-- Progress Steps -->
+  <div class="checkout-steps mb-4">
+    <div class="step active" routerLink="/cart">Cart</div>
+    <div class="step active">Checkout</div>
+    <div class="step">Payment</div>
+    <div class="step">Confirmation</div>
+  </div>
+
+  <div class="row">
+
+    <!-- Left: Product List -->
+    <div class="col-lg-8 mb-4">
+      <div class="card shadow-sm border-0 rounded-lg">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">Your Items</h4>
+        </div>
+        <div class="card-body p-4">
+
+          <div *ngFor="let item of selectedItems"
+            class="checkout-item mb-3 p-3 border rounded d-flex align-items-center">
+            <img [src]="item.image" style="height: 100px; object-fit: contain;" alt="{{ item.title }}"
+              class="img-thumbnail mr-3 product-img">
+            <div class="flex-grow-1">
+              <h5 class="mb-1">{{ item.title }}</h5>
+              <p class="text-muted mb-1 ">Quantity: {{ item.qty }}</p>
+              <strong class="text-primary">{{ item.price * item.qty | currency }}</strong>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Summary -->
+    <div class="col-lg-4">
+      <div class="card shadow-sm border-0 rounded-lg sticky-top">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">Order Summary</h5>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between mb-3">
+            <span>Subtotal</span>
+            <span>{{ total | currency }}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-3">
+            <span>Shipping</span>
+            <span class="text-success">Free</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <strong>Total</strong>
+            <strong class="text-success">{{ total | currency }}</strong>
+          </div>
+        </div>
+        <button class="btn btn-success btn-block btn-lg" (click)="goToPayment()">
+          Place Order
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</div>

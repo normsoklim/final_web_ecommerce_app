@@ -1,0 +1,96 @@
+body {
+    background-color: #f4f6f8;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    padding: 25px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+}
+
+.product-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.price {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #28a745;
+}
+
+.secondary-price {
+    font-size: 1rem;
+    color: #6c757d;
+    display: block;
+    margin-top: 5px;
+}
+
+.btn-buy {
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-buy:hover {
+    transform: scale(1.05);
+}
+
+.product-img {
+    border-radius: 10px;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.fas.fa-shopping-cart {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .product-title {
+        font-size: 1.6rem;
+    }
+
+    .price {
+        font-size: 1.4rem;
+    }
+}
+
+/* ---------- Image Zoom Styles ---------- */
+.product-img-zoom {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.product-img-zoom img {
+  width: 100%;
+  display: block;
+}
+
+.zoom-lens {
+  position: absolute;
+  border: 2px solid #000;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  pointer-events: none;
+  display: none;
+  background-repeat: no-repeat;
+  background-size: 200%; /* zoom level */
+}

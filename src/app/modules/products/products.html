@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="card h-100">
+    <div class="position-relative"></div>
+        <span class=" badge badge-danger Category-badge">
+            {{product.category}}
+        </span>
+        <img [src]="product.image" alt="Product Image" class="card-image pro-img card-img-top"[routerLink]="['/product-detail']"
+            [queryParams]="{product_id:product.id}">
+    <div class="card-content">
+        <h2 class="card-title brand-label" class="product-title">{{product.title}}</h2>
+        <p class="card-price mr-2 ">{{product.price | currency}}</p>
+        <p class="card-price-KHR mr-2">{{product.price | toKHR:4100 }}</p>
+        <p class="card-description" class="product-description"
+         [routerLink]="['/product-detail']"
+        [queryParams]="{product_id:product.id}"
+         >
+            {{product.description}}
+        </p>
+        <div class="card-rating" [ngClass]="getRatingClass(product.rating.rate)">
+            <ng-container *ngFor="let star of getStars(product.rating.rate)">
+                <i class="fa" [ngClass]="{
+             'fa-star': star === 'full',
+             'fa-star-half-o': star === 'half',
+             'fa-star-o': star === 'empty'
+           }"></i>
+            </ng-container>
+            <span class="text-muted ms-2">({{ product.rating.count }} reviews)</span>
+        </div>
+        <button class="card-button" (click)="addToCart(product)">Add To Cart</button>
+    </div>
+</div>

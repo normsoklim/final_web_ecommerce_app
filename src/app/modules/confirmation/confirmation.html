@@ -1,0 +1,36 @@
+<div class="card-body p-4">
+
+  <h4 class="mb-3">Payment Information</h4>
+
+  <div *ngIf="paymentInfo">
+  <p><strong>Cardholder Name:</strong> {{ paymentInfo.cardName }}</p>
+  <p><strong>Card Number:</strong> {{ paymentInfo.cardNumber  }}</p>
+  <p><strong>Expiry:</strong> {{ paymentInfo.expiry }}</p>
+  <p><strong>CVV:</strong> ****</p>
+</div>
+
+
+  <ng-template #noPayment>
+    <p>No payment information submitted.</p>
+  </ng-template>
+
+  <hr>
+
+  <h4>Order Summary</h4>
+  <div *ngFor="let item of selectedItems" class="d-flex justify-content-between mb-2">
+    <span>{{ item.title }} x {{ item.qty }}</span>
+    <span>{{ item.price * item.qty | currency }}</span>
+  </div>
+
+  <div class="d-flex justify-content-between mt-3">
+    <strong>Total USD</strong>
+    <strong>{{ total | currency }}</strong>
+  </div>
+  <div class="d-flex justify-content-between">
+    <strong>Total KHR</strong>
+    <strong>{{ total | toKHR:4100 }}</strong>
+  </div>
+
+  <button class="btn btn-success mt-4" (click)="confirmOrder()">Confirm Order</button>
+
+</div>

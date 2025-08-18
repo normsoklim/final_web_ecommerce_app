@@ -1,0 +1,75 @@
+.carousel-inner img {
+  height: 450px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item.active img {
+  transform: scale(1.02);
+}
+
+/* Indicators - centered modern dots */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  padding: 0;
+  gap: 10px;
+}
+
+.carousel-indicators li {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.carousel-indicators .active {
+  background-color: #007bff; /* Bootstrap primary color */
+  transform: scale(1.2);
+}
+
+
+
+.carousel-caption.custom-caption h5,
+.carousel-caption.custom-caption p {
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Controls styling */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.8;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 60% 60%;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
+
+/* Responsive captions */
+@media (max-width: 768px) {
+  .carousel-caption.custom-caption {
+    padding: 0.5rem 1rem;
+  }
+  .carousel-caption.custom-caption h5,
+  .carousel-caption.custom-caption p {
+    font-size: 0.9rem;
+  }
+}

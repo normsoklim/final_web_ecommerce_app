@@ -1,0 +1,163 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Card Container */
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  margin: auto;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Badge */
+.Category-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: #b40505;
+  color: white;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 8px;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Image */
+.card-image,
+.pro-img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  background-color: #fff;
+}
+
+/* Card Content */
+.card-content,
+.card-body {
+  padding: 20px;
+}
+
+/* Title */
+.card-title,
+.product-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Price */
+.card-price,
+.card-price-KHR {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ff0000b4;
+  margin-bottom: 0.3rem;
+}
+
+/* Description */
+.card-description,
+.product-description {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Rating */
+.card-rating {
+  font-size: 0.95rem;
+  color: #f39c12;
+  margin-bottom: 16px;
+}
+
+/* Button */
+.card-button,
+.btn-buy {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.card-button:hover {
+  background-color: #0056b3;
+}
+@media (max-width: 576px) {
+  .card {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-description {
+    font-size: 0.9rem;
+  }
+
+  .pro-img {
+    height: 200px;
+  }
+}
+.card-rating i {
+  color: gold;
+  margin-right: 2px;
+  font-size: 1.1rem;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: contain;
+}
+
+.card-content {
+  padding: 10px;
+}
+.product-description{
+  cursor: pointer;
+}
+.product-description:hover{
+  color: blue;
+}
+img{
+  cursor: pointer;
+}

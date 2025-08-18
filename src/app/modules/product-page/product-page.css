@@ -1,0 +1,20 @@
+.page-title {
+  font-weight: 700;
+  color: #222;
+  position: relative;
+  display: inline-block;
+}
+.page-title::after {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+/* spacing for grid */
+.col-lg-3, .col-md-4, .col-sm-6 {
+  display: flex;
+}

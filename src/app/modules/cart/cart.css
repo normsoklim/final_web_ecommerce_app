@@ -1,0 +1,76 @@
+.cart-item {
+    border-bottom: 1px solid #eaeaea;
+    padding: 15px 0;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.cart-summary {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-control button {
+    width: 32px;
+    height: 32px;
+    line-height: 1;
+    padding: 0;
+}
+
+.quantity-control span {
+    width: 30px;
+    text-align: center;
+    display: inline-block;
+}
+
+.checkout-btn {
+    margin-top: 20px;
+}
+.step {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 2px solid #dee2e6;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.step.active {
+  border-color: #007bff;
+  background: #007bff;
+  color: white;
+}
+/* Step progress bar */
+.checkout-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+}
+.checkout-steps::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #dee2e6;
+  transform: translateY(-50%);
+  z-index: 0;
+}

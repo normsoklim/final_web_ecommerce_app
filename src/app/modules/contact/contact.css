@@ -1,0 +1,67 @@
+body {
+    background: #f8f9fa;
+    padding-top: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.contact-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+    max-width: 960px;
+    margin: auto;
+}
+
+h2 {
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #007bff;
+}
+
+.contact-info h5 {
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #0056b3;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive iframe container for map */
+.map-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
+    position: relative;
+    height: 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+    margin-top: 20px;
+}
+
+.map-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border: 0;
+    border-radius: 8px;
+}
+
+@media (max-width: 767px) {
+    .contact-info {
+        margin-top: 40px;
+    }
+}

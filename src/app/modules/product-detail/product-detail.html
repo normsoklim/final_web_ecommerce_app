@@ -1,0 +1,32 @@
+<div class="container my-5">
+  <div class="row align-items-center">
+    <div class="col-md-6 text-center mb-4 mb-md-0">
+      <div class="product-img-zoom" (mousemove)="zoomImage($event)" (mouseleave)="resetZoom()">
+        <img #productImg [src]="product.image" alt="{{ product.title }}">
+        <div class="zoom-lens" [ngStyle]="lensStyle"></div>
+      </div>
+    </div>
+
+
+    <!-- Product Details -->
+    <div class="col-md-6">
+      <div class="product-card">
+        <h2 class="product-title">{{product.title}}</h2>
+        <p class="text-muted mb-2">Category: <span class="font-weight-semibold">{{product.category}}</span></p>
+
+        <div class="mb-3">
+          <span class="price">{{product.price | currency}}</span>
+          <small class="secondary-price">{{product.price | toKHR:4100 }}</small>
+        </div>
+
+        <p class="mb-4">{{product.description}}</p>
+
+        <div class="d-flex align-items-center">
+          <i class="fas fa-shopping-cart" routerLink="/"><img src="/image/BackIcon.png" alt=""
+              [style]="{'width': '25px', 'height': '25px'}"></i> Back
+        </div>
+
+      </div>
+    </div>
+
+  </div>

@@ -1,0 +1,8 @@
+   <app-slide></app-slide>
+<br>
+<div class="row">
+    @for(item of productServie.getProduct(); track item.id) {
+    <app-products class="col-md-3 mt-2" [product]="item" (onAddToCart)="addToCart($event)">
+    </app-products>
+    }
+</div>
