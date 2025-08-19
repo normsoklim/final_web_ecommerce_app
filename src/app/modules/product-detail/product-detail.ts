@@ -2,16 +2,15 @@ import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@
 import { ActivatedRoute } from '@angular/router';
 import { CurrencyPipe, NgClass, NgFor, NgStyle } from '@angular/common';
 import { ToKHRPipe } from "../../shared/pipes/pipes";
-import { RouterLink } from '@angular/router';
 import { CartService } from '../../services/cart-service';
-declare const Swal: any; // Assuming Swal is globally available
+declare const Swal: any; 
 declare const axios: any;
 declare const $: any;
 @Component({
   selector: 'app-product-detail',
-  imports: [CurrencyPipe, ToKHRPipe, RouterLink, NgStyle, NgClass, NgFor],
+  imports: [CurrencyPipe, ToKHRPipe, NgStyle, NgClass, NgFor],
   templateUrl: './product-detail.html',
-  styleUrls: ['./product-detail.css']
+  styleUrl: './product-detail.css'
 })
 export class ProductDetail {
 
@@ -34,7 +33,7 @@ export class ProductDetail {
         console.log(error);
       })
   }
-  // Add to cart function
+  
   addToCart() {
 
     const swalWithBootstrapButtons = Swal.mixin({
@@ -77,35 +76,37 @@ export class ProductDetail {
   @ViewChild('productImg') productImg!: ElementRef<HTMLImageElement>;
   lensStyle: any = {};
   zoomImage(event: MouseEvent) {
-    const img = this.productImg.nativeElement;
-    const rect = img.getBoundingClientRect();
+  const img = this.productImg.nativeElement;
+  const rect = img.getBoundingClientRect();
 
-    // Mouse position relative to image
-    let x = event.clientX - rect.left;
-    let y = event.clientY - rect.top;
+  const lensWidth = 120;
+  const lensHeight = 120;
 
-    // Keep lens inside image
-    const lensWidth = 120;
-    const lensHeight = 120;
-    x = Math.max(lensWidth / 2, Math.min(x, rect.width - lensWidth / 2));
-    y = Math.max(lensHeight / 2, Math.min(y, rect.height - lensHeight / 2));
+  // Mouse position relative to image
+  let x = event.clientX - rect.left;
+  let y = event.clientY - rect.top;
 
-    // Percentage positions
-    const xPercent = x / rect.width * 100;
-    const yPercent = y / rect.height * 100;
+  // Keep lens inside image
+  x = Math.max(lensWidth / 2, Math.min(x, rect.width - lensWidth / 2));
+  y = Math.max(lensHeight / 2, Math.min(y, rect.height - lensHeight / 2));
 
-    this.lensStyle = {
-      display: 'block',
-      top: `${y - lensHeight / 2}px`,
-      left: `${x - lensWidth / 2}px`,
-      backgroundImage: `url(${this.product.image})`,
-      backgroundSize: `${rect.width * 2}px ${rect.height * 2}px`,
-      backgroundPosition: `${-xPercent * 2 + 50}% ${-yPercent * 2 + 50}%`
-    };
-  }
-  resetZoom() {
-    this.lensStyle = { display: 'none' };
-  }
+  // Calculate zoom scale (2x)
+  const scale = 2;
+
+  this.lensStyle = {
+    display: 'block',
+    top: `${y - lensHeight / 2}px`,
+    left: `${x - lensWidth / 2}px`,
+    backgroundImage: `url(${this.product.image})`,
+    backgroundSize: `${rect.width * scale}px ${rect.height * scale}px`,
+    backgroundPosition: `-${x * scale - lensWidth / 2}px -${y * scale - lensHeight / 2}px`
+  };
+}
+
+resetZoom() {
+  this.lensStyle = { display: 'none' };
+}
+
   getStars(rating: number): string[] {
     const stars: string[] = [];
     const fullStars = Math.floor(rating);

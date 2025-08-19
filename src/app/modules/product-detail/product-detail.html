@@ -2,12 +2,13 @@
   <div class="row align-items-center">
     <div class="col-md-6 text-center mb-4 mb-md-0">
       <div class="product-img-zoom" (mousemove)="zoomImage($event)" (mouseleave)="resetZoom()">
-        <img #productImg [src]="product.image" alt="{{ product.title }}" style="height: 300px; object-fit: contain;" class="img-fluid rounded shadow">
+        <img #productImg [src]="product.image" alt="{{ product.title }}" style="height: 400px; object-fit: contain;" />
+
+        <!-- Lens overlay -->
         <div class="zoom-lens" [ngStyle]="lensStyle"></div>
       </div>
+
     </div>
-
-
     <!-- Product Details -->
     <div class="col-md-6">
       <div class="product-card">
@@ -18,25 +19,24 @@
           <span class="price">{{product.price | currency}}</span>
           <small class="secondary-price">{{product.price | toKHR:4100 }}</small>
         </div>
-         <div class="card-rating" [ngClass]="getRatingClass(product.rating.rate)">
-            <ng-container *ngFor="let star of getStars(product.rating.rate)">
-                <i class="fa" [ngClass]="{
+        <div class="card-rating" [ngClass]="getRatingClass(product.rating.rate)">
+          <ng-container *ngFor="let star of getStars(product.rating.rate)">
+            <i class="fa" [ngClass]="{
              'fa-star': star === 'full',
              'fa-star-half-o': star === 'half',
              'fa-star-o': star === 'empty'
            }"></i>
-            </ng-container>
-            <span class="text-muted ms-2">({{ product.rating.count }} reviews)</span>
+          </ng-container>
+          <span class="text-muted ms-2">({{ product.rating.count }} reviews)</span>
         </div>
         <p class="mb-4">{{product.description}}</p>
         <div class="d-flex justify-content-between align-items-center mt-2">
           <div class="text-right">
-            <i  routerLink="/"><img src="/image/BackIcon.png" alt=""
-                style="height: 25px; width: 25px;"></i> Back
+            <i routerLink="/"><img src="/image/BackIcon.png" alt="" style="height: 25px; width: 25px;"></i> Back
           </div>
           <button class="btn btn-primary btn-lg" type="button" (click)="addToCart()">
             Add to Cart
-            </button>
+          </button>
 
         </div>
       </div>
