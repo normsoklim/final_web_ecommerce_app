@@ -164,3 +164,26 @@ body {
 .search-btn i {
   font-size: 0.9rem;
 }
+/* Cart icon */
+.cart-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  position: relative;
+}
+
+/* Cart badge (closer to icon) */
+.cart-badge {
+  font-size: 0.65rem;
+  min-width: 18px;
+  padding: 3px 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: -6px;    /* adjust vertical position */
+  right: -6px;  /* adjust horizontal position */
+  background-color: #dc3545;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { CurrencyPipe, NgClass, NgFor, NgStyle } from '@angular/common';
 import { ToKHRPipe } from "../../shared/pipes/pipes";
 import { CartService } from '../../services/cart-service';
@@ -8,7 +8,7 @@ declare const axios: any;
 declare const $: any;
 @Component({
   selector: 'app-product-detail',
-  imports: [CurrencyPipe, ToKHRPipe, NgStyle, NgClass, NgFor],
+  imports: [CurrencyPipe, ToKHRPipe, NgStyle, NgClass, NgFor,RouterLink],
   templateUrl: './product-detail.html',
   styleUrl: './product-detail.css'
 })
