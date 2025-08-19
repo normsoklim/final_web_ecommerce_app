@@ -1,38 +1,44 @@
-/* === Base Navbar Styling (applies everywhere) === */
+/* Navbar base */
 .navbar {
   font-family: 'Segoe UI', sans-serif;
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s ease;
   z-index: 1000;
+  position: fixed; /* <-- makes it stick */
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+body {
+  padding-top: 100px; /* adjust based on navbar height */
 }
 
-.navbar .navbar-brand img {
+/* Brand logo */
+.navbar-brand img {
   transition: transform 0.3s ease;
 }
-.navbar .navbar-brand img:hover {
+.navbar-brand img:hover {
   transform: scale(1.05);
 }
 
+/* Nav links */
 .navbar-nav .nav-link {
   font-weight: 500;
   color: #333;
-  padding: 8px 16px;
   border-radius: 6px;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active-link {
   color: #0d6efd;
-  background-color: rgba(13, 110, 253, 0.1);
+  background-color: rgba(13, 110, 253, 0.08);
 }
 
-/* === Dropdowns (desktop hover) === */
+/* Dropdown menu */
 .dropdown-menu {
   border: none;
   border-radius: 10px;
-  padding: 0.5rem 0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
@@ -47,97 +53,114 @@
   transform: translateY(0);
   pointer-events: auto;
 }
-.dropdown-item {
-  font-size: 14px;
-  padding: 10px 20px;
-}
 .dropdown-item:hover {
   background-color: #f8f9fa;
 }
 
-.navbar .badge {
+/* Badge (cart count) */
+.badge {
+  font-size: 0.65rem;
+  min-width: 18px;
   padding: 3px 6px;
-  font-weight: 500;
   border-radius: 10px;
 }
 
-/* === Desktop (≥992px): standard navbar === */
+/* Desktop */
 @media (min-width: 992px) {
   .offcanvas-collapse {
-    position: static !important;
-    transform: none !important;
-    box-shadow: none !important;
-    width: auto !important;
-    background: transparent !important;
     display: flex !important;
     flex-direction: row !important;
-    align-items: center !important;
-    padding: 0 !important;
-  }
-
-  .offcanvas-collapse .close-btn {
-    display: none !important;
-  }
-
-  .offcanvas-collapse .navbar-nav {
-    flex-direction: row !important;
-    gap: 1rem;
-    margin-left: auto; /* push links to right */
-  }
-
-  .offcanvas-collapse .nav-link {
-    font-size: 1rem !important;
-    padding: 8px 16px !important;
+    position: static !important;
+    transform: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
   }
 }
 
-/* === Mobile (<992px): offcanvas === */
+/* Mobile offcanvas */
 @media (max-width: 991.98px) {
   .offcanvas-collapse {
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; right: 0; bottom: 0;
     width: 260px;
-    padding: 1rem;
-    background-color: #fff;
-    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.15);
+    background: #fff;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
-    z-index: 1050;
+    box-shadow: -3px 0 10px rgba(0,0,0,0.15);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding: 2rem 1rem;
+    z-index: 1050;
   }
   .offcanvas-collapse.show {
     transform: translateX(0);
   }
   .offcanvas-collapse .close-btn {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 15px; right: 15px;
     font-size: 2rem;
-    border: none;
     background: none;
+    border: none;
     cursor: pointer;
     color: #333;
   }
   .offcanvas-collapse .navbar-nav {
     flex-direction: column;
+    gap: 1.2rem;
     text-align: center;
-    margin-top: 3rem;
-    gap: 1rem;
+    margin-top: 2rem;
   }
-  .offcanvas-collapse .nav-link {
-    font-size: 1.2rem;
-    padding: 10px 0;
-  }
-
-  /* Disable hover dropdowns on touch */
+  /* Disable hover dropdown on mobile */
   .hover-dropdown:hover > .dropdown-menu {
     opacity: 0 !important;
     visibility: hidden !important;
     transform: translateY(10px);
     pointer-events: none;
   }
+}
+/* Search form container */
+.search-form {
+  position: relative;
+  max-width: 250px;
+}
+
+/* Input box */
+.search-input {
+  width: 100%;
+  padding: 8px 40px 8px 12px;
+  border-radius: 50px;
+  border: 1px solid #ced4da;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.search-input:focus {
+  outline: none;
+  border-color:#fff;
+  box-shadow: 0 0 5px rgba(13,110,253,0.3);
+}
+
+/* Search button */
+.search-btn {
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  color: #fff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.search-btn:hover {
+  background: #0b5ed7;
+}z
+
+/* Font Awesome icon inside button */
+.search-btn i {
+  font-size: 0.9rem;
 }

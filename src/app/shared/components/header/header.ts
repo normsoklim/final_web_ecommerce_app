@@ -7,7 +7,7 @@ import { ProductService } from '../../../services/product-service';
 
 @Component({
   selector: 'app-header',
-  imports: [NgIf, RouterLink,NgClass],
+  imports: [ RouterLink,NgClass],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })

@@ -3,6 +3,7 @@ import { Products } from '../products/products';
 import { Slide } from '../slide/slide';
 import { CartService } from '../../services/cart-service';
 import { ProductService } from '../../services/product-service';
+import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-home',
   imports: [Products, Slide],
@@ -10,7 +11,7 @@ import { ProductService } from '../../services/product-service';
   styleUrl: './home.css'
 })
 export class Home {
-  constructor (public  cartService : CartService,public productServie : ProductService ){
+  constructor (public  cartService : CartService,public productService : ProductService ){
      
   }
    addToCart(product:any):void { 

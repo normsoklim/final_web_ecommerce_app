@@ -9,9 +9,9 @@ declare const axios: any;
 declare const $: any;
 @Component({
   selector: 'app-product-detail',
-  imports: [CurrencyPipe, ToKHRPipe, RouterLink, NgStyle, NgClass,NgFor],
+  imports: [CurrencyPipe, ToKHRPipe, RouterLink, NgStyle, NgClass, NgFor],
   templateUrl: './product-detail.html',
-  styleUrl: './product-detail.css'
+  styleUrls: ['./product-detail.css']
 })
 export class ProductDetail {
 
@@ -36,7 +36,6 @@ export class ProductDetail {
   }
   // Add to cart function
   addToCart() {
-
 
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
