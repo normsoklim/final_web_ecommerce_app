@@ -9,7 +9,7 @@ import { ProductDetail } from './modules/product-detail/product-detail';
 import { CheckOut } from './modules/check-out/check-out';
 import { ProductPage } from './modules/product-page/product-page';
 import { Payment } from './modules/payment/payment';
-import { Confirmation } from './modules/confirmation/confirmation';
+
 
 
 
@@ -52,11 +52,7 @@ export const routes: Routes = [
     {
         path:'payment',
         component:Payment
-    },
-    {
-        path:'confirmation',
-        component:Confirmation
     }
-
+    
 
 ];

@@ -1,96 +1,84 @@
 <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
   <div class="container">
 
+    <!-- Brand -->
     <a class="navbar-brand d-flex align-items-center" routerLink="/">
       <img src="/image/logoforweb.png" alt="logo" style="width: 60px; height: 60px;">
     </a>
 
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler border-0" type="button" (click)="toggleMenu()">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
 
-      </ul>
-      <!-- Right links -->
-      <ul class="navbar-nav ms-auto align-items-center gap-2">
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas-collapse" [ngClass]="{ 'show': isMenuOpen }" id="navbarNav">
+
+      <!-- Close button -->
+      <button class="close-btn" (click)="toggleMenu()">
+        &times;
+      </button>
+
+      <!-- Centered Nav Items -->
+      <ul class="navbar-nav flex-column text-center mt-5 gap-3">
+
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active-link">Home</a>
+          <a class="nav-link" routerLink="/" routerLinkActive="active-link" (click)="toggleMenu()">Home</a>
         </li>
 
-        <!-- Shop Dropdown -->
+        <!-- Shop -->
         <li class="nav-item dropdown hover-dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
             Shop
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/product-page"><img src="/image/box.png" alt="product icon"
-                  style="width: 20px; height: 20px; object-fit: contain;"> Products</a>
-            </li>
+          <ul class="dropdown-menu text-center">
+            <li><a class="dropdown-item" routerLink="/product-page" (click)="toggleMenu()">
+                <img src="/image/box.png" style="width:20px;height:20px;"> Products
+              </a></li>
           </ul>
         </li>
-        <li class="nav-item position-relative me-3">
-          <a class="nav-link d-flex align-items-center" routerLink="/cart" style="position: relative;">
-            <img src="/image/add-button.png" alt="Cart" style="width: 24px; height: 24px;">
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-              style="font-size: 0.6rem; min-width: 18px; line-height: 1;">
+
+        
+        <!-- Cart -->
+        <li class="nav-item position-relative">
+          <a class="nav-link d-flex justify-content-center align-items-center" routerLink="/cart"
+            (click)="toggleMenu()">
+            <img src="/image/add-button.png" style="width:24px;height:24px;">
+            <span class="badge rounded-pill bg-danger ms-1" style="font-size:0.6rem; min-width:18px; line-height:1;">
               {{ cartService.getCartItem().length }}
             </span>
           </a>
         </li>
-
-        <li class="nav-item" *ngIf="!isLoggedIn">
-          <a class="nav-link" routerLink="/contact">Contact</a>
-        </li>
-        <!-- Shop Dropdown -->
+       <!-- User -->
         <li class="nav-item dropdown hover-dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
             <img src="/image/person.png" alt="">
           </a>
-          <ul class="dropdown-menu">
-            <li class="nav-item" *ngIf="!isLoggedIn">
-              <a class="nav-link" routerLink="/login"><img src="/image/userlogin.png" alt="login icon"
-                  style="width: 15px; height: 15px;"> LogIn</a>
+          <ul class="dropdown-menu text-center">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/login" (click)="toggleMenu()">Login</a>
             </li>
-
-            <li class="nav-item" *ngIf="!isLoggedIn">
-              <a class="nav-link" routerLink="/register"><img src="/image/register.png" alt="register icon"
-                  style="width: 20px; height: 20px;"> Register</a>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/register" (click)="toggleMenu()">Register</a>
             </li>
           </ul>
         </li>
 
+        <!-- Contact -->
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link" routerLink="/contact" (click)="toggleMenu()">Contact</a>
+        </li>
 
-        <li class="nav-item dropdown hover-dropdown" *ngIf="isLoggedIn">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-            {{ userName }}
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item">Logout</a></li>
-          </ul>
+         <!-- Search -->
+        <li class="nav-item">
+          <form class="d-flex justify-content-center" (ngSubmit)="onSearch(searchInput.value)">
+            <input #searchInput type="text" class="form-control me-2" placeholder="Search..." style="max-width: 250px;">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+          </form>
         </li>
       </ul>
-
-    <!-- Search -->
-<form class="search-form d-flex ml-3" role="search">
-  <input 
-    class="form-control form-control-sm" 
-    type="search" 
-    placeholder="Search products..." 
-    aria-label="Search">
-  <button type="submit" class="search-btn">
-    <img src="/image/search.png" alt="Search" class="search-icon">
-  </button>
-</form>
-
-
     </div>
+
   </div>
 </nav>

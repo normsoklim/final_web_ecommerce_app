@@ -2,7 +2,7 @@
   <div class="row align-items-center">
     <div class="col-md-6 text-center mb-4 mb-md-0">
       <div class="product-img-zoom" (mousemove)="zoomImage($event)" (mouseleave)="resetZoom()">
-        <img #productImg [src]="product.image" alt="{{ product.title }}">
+        <img #productImg [src]="product.image" alt="{{ product.title }}" style="height: 300px; object-fit: contain;" class="img-fluid rounded shadow">
         <div class="zoom-lens" [ngStyle]="lensStyle"></div>
       </div>
     </div>
@@ -18,15 +18,29 @@
           <span class="price">{{product.price | currency}}</span>
           <small class="secondary-price">{{product.price | toKHR:4100 }}</small>
         </div>
-
-        <p class="mb-4">{{product.description}}</p>
-
-        <div class="d-flex align-items-center">
-          <i class="fas fa-shopping-cart" routerLink="/"><img src="/image/BackIcon.png" alt=""
-              [style]="{'width': '25px', 'height': '25px'}"></i> Back
+         <div class="card-rating" [ngClass]="getRatingClass(product.rating.rate)">
+            <ng-container *ngFor="let star of getStars(product.rating.rate)">
+                <i class="fa" [ngClass]="{
+             'fa-star': star === 'full',
+             'fa-star-half-o': star === 'half',
+             'fa-star-o': star === 'empty'
+           }"></i>
+            </ng-container>
+            <span class="text-muted ms-2">({{ product.rating.count }} reviews)</span>
         </div>
+        <p class="mb-4">{{product.description}}</p>
+        <div class="d-flex justify-content-between align-items-center mt-2">
+          <div class="text-right">
+            <i  routerLink="/"><img src="/image/BackIcon.png" alt=""
+                style="height: 25px; width: 25px;"></i> Back
+          </div>
+          <button class="btn btn-primary btn-lg" type="button" (click)="addToCart()">
+            Add to Cart
+            </button>
 
+        </div>
       </div>
     </div>
 
   </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
