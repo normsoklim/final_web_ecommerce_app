@@ -48,7 +48,7 @@
           <strong>{{item.price * item.qty | currency}}</strong>
         </div>
         <div class="col-6 col-md-2 text-right">
-          <button class="btn btn-outline-danger btn-sm" (click)="cartService.removeCartItem(item)">Remove</button>
+          <h1 (click)="cartService.removeCartItem(item)"><img src="/image/delete.png" alt="" style="height: 24px;object-fit: contain;" ></h1>
         </div>
       </div>
     }
