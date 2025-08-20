@@ -3,6 +3,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 
+/* Product Card */
 .product-card {
     background: #fff;
     border-radius: 15px;
@@ -34,63 +35,53 @@ body {
     margin-top: 5px;
 }
 
-.btn-buy {
+/* Responsive Button */
+.btn-primary {
     border-radius: 50px;
     padding: 10px 25px;
     font-size: 1rem;
     transition: all 0.3s ease;
 }
 
-.btn-buy:hover {
+.btn-primary:hover {
     transform: scale(1.05);
 }
 
-.product-img {
+
+/* Image Zoom Container */
+.product-img-zoom {
+    position: relative;
+    width: 100%;          /* take full width of column */
+    max-width: 300px;     /* limit maximum width */
+    margin: 0 auto;       /* center the image */
+    overflow: hidden;
     border-radius: 10px;
-    background: #fff;
-    padding: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    max-height: 400px;
+}
+
+/* Product Image */
+.product-img-responsive {
+    width: 100%;          /* fill container width */
+    height: auto;         /* maintain aspect ratio */
+    display: block;
     object-fit: contain;
+    border-radius: 10px;
 }
 
-.fas.fa-shopping-cart {
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    .product-title {
-        font-size: 1.6rem;
-    }
-
-    .price {
-        font-size: 1.4rem;
-    }
-}
-
-/* ---------- Image Zoom Styles ---------- */
-.product-img-zoom {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.product-img-zoom {
-  position: relative;
-  display: inline-block;
-}
-
+/* Zoom Lens */
 .zoom-lens {
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  border: 2px solid #000;
-  border-radius: 50%;
-  background-repeat: no-repeat;
-  pointer-events: none; /* allow mouse to pass through */
-  display: none;
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    pointer-events: none; 
+    display: none;        /* will show via TS on hover */
 }
 
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .product-img-zoom {
+        max-width: 200px;  /* smaller on mobile */
+    }
+}

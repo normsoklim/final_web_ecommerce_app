@@ -3,10 +3,10 @@ import { Products } from '../products/products';
 import { Slide } from '../slide/slide';
 import { CartService } from '../../services/cart-service';
 import { ProductService } from '../../services/product-service';
-import { NgFor } from '@angular/common';
+import { NgFor, TitleCasePipe } from '@angular/common';
 @Component({
   selector: 'app-home',
-  imports: [Products, Slide],
+  imports: [Products, Slide, NgFor, TitleCasePipe],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

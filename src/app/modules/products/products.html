@@ -5,7 +5,7 @@
         <span class=" badge badge-danger Category-badge">
             {{product.category}}
         </span>
-        <img [src]="product.image" alt="Product Image" class="card-image pro-img card-img-top"[routerLink]="['/product-detail']"
+        <img [src]="product.image" alt="Product Image"  class="card-image pro-img card-img-top"[routerLink]="['/product-detail']"
             [queryParams]="{product_id:product.id}">
     <div class="card-content">
         <h2 class="card-title brand-label" class="product-title">{{product.title}}</h2>

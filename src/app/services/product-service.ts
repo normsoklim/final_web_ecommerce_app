@@ -26,5 +26,19 @@ export class ProductService {
   getProduct() {
     return this.products
   }
+  // Get unique categories (as strings)
+  getCategories(): string[] {
+    const categories: string[] = [];
+    this.products.forEach(p => {
+      if (!categories.includes(p.category)) {
+        categories.push(p.category);
+      }
+    });
+    return categories;
+  }
 
+  // Get products by category
+  getProductsByCategory(category: string) {
+    return this.products.filter(p => p.category === category);
+  }
 }
