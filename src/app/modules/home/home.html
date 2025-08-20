@@ -3,24 +3,24 @@
 <br>
 
 <div class="container">
-    <!-- Loop through categories -->
-    <ng-container *ngFor="let category of productService.getCategories()">
-        <div class="category-section mt-5">
-            <!-- Category Title -->
-            <h2 class="section-title text-center mb-4">
-                {{ category | titlecase }}
-            </h2>
+  <!-- Loop through categories -->
+  <ng-container *ngFor="let category of productService.getCategories()">
+    <div class="category-section mt-5">
+      <!-- Category Title -->
+      <h2 class="section-title text-center mb-4">
+        {{ category | titlecase }}
+      </h2>
 
-            <div class="row">
-                <!-- Products inside each category -->
-                @for(item of productService.getProduct(); track item.id) {
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex">
-                    <app-products class="card flex-fill shadow-sm border-0" [product]="item"
-                        (onAddToCart)="addToCart($event)">
-                    </app-products>
-                </div>
-                }
-            </div>
-        </div>
-    </ng-container>
+      <div class="row">
+        <!-- Products inside each category -->
+        <ng-container *ngFor="let item of productService.getProductsByCategory(category)">
+          <app-products 
+            class="col-md-3 col-sm-6 mt-2" 
+            [product]="item" 
+            (onAddToCart)="addToCart($event)">
+          </app-products>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
 </div>
