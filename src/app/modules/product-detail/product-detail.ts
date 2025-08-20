@@ -19,14 +19,13 @@ export class ProductDetail {
   ngOnInit(): void {
     const product_id: string | null = this.route.snapshot.queryParamMap.get('product_id');
     let ng_this = this;
-    $.LoadingOverlay("show");
-    // Make a request for a user with a given ID
+  
     axios.get(`https://fakestoreapi.com/products/${product_id}`)
       .then(function (response: any) {
         // handle success
         ng_this.product = response.data;
         console.log(ng_this.product)
-        $.LoadingOverlay("hide");
+       
       })
       .catch(function (error: any) {
         // handle error
